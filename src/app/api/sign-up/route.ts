@@ -12,6 +12,11 @@ export async function POST(request: Request) {
         try {
            const {username, email , password} =  await request.json();
 
+           const existingUserVerifiedByUsername = UserModel.findOne({
+            username,
+            isVerified: true
+           })
+
         } catch (error) {
             console.error("Error registering user", error);
             return Response.json({
